@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter+Tight:wght@300;400&family=Homemade+Apple&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   body {
     margin: 0; min-height: 100vh; color: #fff6f8; font-family: 'Inter Tight', sans-serif; font-weight: 300;
     text-shadow: 0 1px 14px rgba(60,30,42,.35);
@@ -33,6 +34,16 @@
   .hand { margin: 40px 0 0; font-family: 'Homemade Apple', cursive; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.6; transform: rotate(-3deg); }
   .panel { align-self: center; width: min(520px, 100%); padding: 32px clamp(20px, 5vw, 40px); border: 1px solid rgba(255,246,248,.6); background: rgba(90,52,67,.22); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); text-align: center; font-size: 15px; line-height: 1.6; }
   .panel em { font-family: 'Cormorant Garamond', serif; font-size: 19px; }
+  .panel form { display: flex; flex-direction: column; gap: 18px; margin: 0; }
+  .panel .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .panel input { flex: 1 1 220px; min-width: 0; min-height: 48px; padding: 12px 16px; border: 1px solid rgba(255,246,248,.75); border-radius: 999px; background: rgba(255,246,248,.12); color: #fff6f8; font: 300 16px 'Inter Tight', sans-serif; }
+  .panel input::placeholder { color: rgba(255,246,248,.75); }
+  .panel input:focus { outline: 2px solid #fff6f8; outline-offset: 2px; }
+  .panel button { flex: 0 0 auto; min-height: 48px; padding: 12px 26px; border: 1px solid #fff6f8; border-radius: 999px; background: transparent; color: #fff6f8; font: 400 12px 'Inter Tight', sans-serif; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: background-color .3s ease, color .3s ease; }
+  .panel button:hover, .panel button:focus-visible { background: #fff6f8; color: #5b3443; text-shadow: none; }
+  .panel button:disabled { opacity: .6; cursor: default; }
+  .thanks { margin: 0; font-family: 'Homemade Apple', cursive; font-size: 20px; line-height: 1.7; }
+  .oops { margin: 12px 0 0; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -50,8 +61,29 @@
   </main>
 
   <section class="panel" aria-label="Invitation list">
-    <p style="margin:0">The invitation list opens very soon.<br><em>We promise, no spam.</em></p>
+    <form id="invite" action="https://docs.google.com/forms/d/e/1FAIpQLSf2WUZeuk9kmi06vM2APrdLRm_qcRhYSkZTEUDld72aDD8SIg/formResponse" method="post">
+      <label for="email">Leave your email here to be the first to receive the invitation.<br><em>We promise, no spam.</em></label>
+      <div class="row">
+        <input id="email" name="entry.519187846" type="email" required autocomplete="email" placeholder="your@email.com">
+        <button type="submit">Notify me</button>
+      </div>
+    </form>
+    <p id="thanks" class="thanks" hidden>thank you — we'll write when the water is ready.</p>
+    <p id="oops" class="oops" hidden>Something went quiet on the way. Please try once more.</p>
   </section>
+<script>
+  (function () {
+    var form = document.getElementById('invite');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      btn.disabled = true;
+      fetch(form.action, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+        .then(function () { form.hidden = true; document.getElementById('thanks').hidden = false; })
+        .catch(function () { btn.disabled = false; document.getElementById('oops').hidden = false; });
+    });
+  })();
+</script>
 </div>
 </body>
 </html>
