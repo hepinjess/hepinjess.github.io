@@ -3,33 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tidal Body</title>
-<meta name="description" content="Tidal Body — a space still forming.">
+<title>Tidal Body · Gatherings</title>
+<meta name="description" content="Tidal Body gatherings — Remembrance and Oasis, Baja California Sur, Mexico, 2027.">
+<meta property="og:title" content="Tidal Body · Gatherings">
+<meta property="og:description" content="You are invited. Remembrance · Oasis — Baja California Sur, Mexico, 2027.">
+<meta property="og:image" content="https://tidalbody.com/media/divers-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&family=Cormorant+Garamond:ital,wght@1,300&family=Homemade+Apple&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #eef1ef; --ink: #2b3a3c; --soft: #6b7f80; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #122022; --ink: #dfe7e5; --soft: #93a7a6; } }
-  * { margin: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    background: var(--bg); color: var(--ink);
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px; text-align: center;
-    font-family: "Work Sans", sans-serif; font-weight: 300;
-  }
-  h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(2.6rem, 8vw, 4.5rem); letter-spacing: .04em; }
-  p { margin-top: 1.2rem; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.25rem; color: var(--soft); }
-  a { display: inline-block; margin-top: 3rem; color: var(--ink); font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--soft); padding-bottom: 4px; }
-  a:hover { border-color: var(--ink); }
+  :root { --ground: #dedbd1; --ink: #34507a; --accent: #4c6c9c; --line: rgba(52,80,122,0.55); --soft-line: rgba(52,80,122,0.25); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground) url(media/grain.png); color: var(--ink); font-family: 'Inter Tight', sans-serif; font-weight: 300; }
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: #1f3658; }
+  .wrap { max-width: 600px; margin: 0 auto; padding: 32px 16px 80px; }
+  header { display: flex; justify-content: space-between; gap: 16px; padding: 0 2px 12px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .card { border: 1px solid var(--line); padding: 72px clamp(20px, 7vw, 64px) 56px; display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
+  h1 { margin: 0; font-weight: 400; font-size: 20px; letter-spacing: .08em; text-transform: uppercase; }
+  figure { position: relative; margin: 0 0 44px; width: 100%; }
+  .video { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: #6a8ac0; }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shell { position: absolute; left: 50%; bottom: 0; width: clamp(74px, 21%, 107px); height: auto; transform: translate(-50%, 50%); filter: drop-shadow(0 6px 14px rgba(40,60,90,.18)); pointer-events: none; }
+  .events { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+  .event { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 32px 24px 28px; border: 1px solid var(--line); transition: background-color .35s ease, border-color .35s ease; }
+  .event:hover, .event:focus-visible { background-color: rgba(76,108,156,.09); border-color: var(--ink); }
+  .num { font-size: 12px; letter-spacing: .08em; }
+  .name { font-size: 22px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; }
+  .meta { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .enter { margin-top: 16px; padding: 12px 28px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; transition: background-color .35s ease, color .35s ease; }
+  .event:hover .enter, .event:focus-visible .enter { background-color: var(--ink); color: #eeece6; }
+  .hand { margin: 72px 0 0; font-family: 'Homemade Apple', cursive; font-size: 13px; line-height: 2.1; white-space: pre-line; color: var(--accent); max-width: 100%; }
+  .soon { margin: 24px 0 0; padding-top: 24px; border-top: 1px solid var(--soft-line); width: 100%; font-size: 12px; line-height: 1.7; letter-spacing: .06em; text-transform: uppercase; }
 </style>
 </head>
 <body>
-  <main>
-    <h1>Tidal Body</h1>
-    <p>still forming, like water finding its shape</p>
-    <a href="remembrance/">Oceanic Remembrance</a>
+<div class="wrap">
+  <header>
+    <span>Gatherings</span>
+    <span>Tidal Body</span>
+  </header>
+
+  <main class="card">
+    <h1>You are invited</h1>
+
+    <figure>
+      <div class="video">
+        <video src="media/divers.mp4" poster="media/divers-poster.jpg" autoplay muted loop playsinline aria-label="Two freedivers descending side by side along a line, in soft blue"></video>
+      </div>
+      <img class="shell" src="media/shell.webp" alt="" aria-hidden="true">
+    </figure>
+
+    <div class="events">
+      <a class="event" href="/remembrance/">
+        <span class="num">1 / 2</span>
+        <span class="name">Remembrance</span>
+        <span class="desc">somatic freediving retreat with mobula rays</span>
+        <span class="meta">May 29 – June 4, 2027</span>
+        <span class="meta">Baja California Sur, Mexico</span>
+        <span class="enter">Enter →</span>
+      </a>
+      <a class="event" href="/oasis/">
+        <span class="num">2 / 2</span>
+        <span class="name">Oasis</span>
+        <span class="desc">water movement art residency</span>
+        <span class="meta">June 8 – 11, 2027</span>
+        <span class="meta">Baja California Sur, Mexico</span>
+        <span class="enter">Enter →</span>
+      </a>
+    </div>
+
+    <!-- Handwritten verse: paste your lines between the <p> tags below. Line breaks are kept as written. -->
+    <p class="hand"></p>
+
+    <p class="soon">This home is still being shaped by hand.<br>The full site arrives soon.</p>
   </main>
+</div>
 </body>
 </html>
